@@ -1,27 +1,23 @@
-interface User {
-  id: number;
-  name: string;
+import Link from 'next/link';
+import UserTable from './UserTable';
+import { Suspense } from 'react';
+
+interface Props {
+  searchParams: { sortOrder: string };
 }
 
-export default async function UsersPage() {
-  // only work for fetch, not for third-party library
-  // const res = await fetch('https://jsonplaceholder.typicode.com/users', {
-  //   next: { revalidate: 10 },
-  // });
-  const res = await fetch('https://jsonplaceholder.typicode.com/users', {
-    cache: 'no-store',
-  });
-
-  const users: User[] = await res.json();
+export default async function UsersPage({
+  searchParams: { sortOrder },
+}: Props) {
   return (
     <>
       <h1>Users</h1>
-      <p>{new Date().toLocaleTimeString()}</p>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
+      <Link href='/users/new' className='btn'>
+        New User
+      </Link>
+      <Suspense fallback={<p>Loading...</p>}>
+        <UserTable sortOrder={sortOrder} />
+      </Suspense>
     </>
   );
 }

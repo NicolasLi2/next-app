@@ -2,7 +2,9 @@
 export default function AddToCart() {
   return (
     <div>
-      <button onClick={() => console.log('Click')}>Button</button>
+      <button className='btn btn-primary' onClick={() => console.log('Click')}>
+        Button
+      </button>
     </div>
   );
 }
