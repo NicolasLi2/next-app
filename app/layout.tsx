@@ -1,10 +1,23 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Roboto } from 'next/font/google';
 import NavBar from './NavBar';
 import AuthProvider from './auth/Provider';
+import Script from 'next/script';
+import GoogleAnalyticsScript from './GoogleAnalyticsScript';
+import localFont from 'next/font/local';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+});
+
+const font = localFont({
+  src: '../public/fonts/KirangHaerang-Regular.ttf',
+  variable: '--font-KirangHaerang',
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +31,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' data-theme='winter'>
-      <body className={inter.className}>
+      <GoogleAnalyticsScript />
+      <body className={font.variable}>
         <AuthProvider>
           <NavBar />
           <main className='p-5'>{children}</main>
