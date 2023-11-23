@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ProductCard from './components/ProductCard';
 import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
 import cat from '@/public/images/cat.jpg';
 import { Metadata } from 'next';
 // import HeavyComponent from './components/HeavyComponent';
