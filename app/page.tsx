@@ -33,10 +33,14 @@ export default function Home() {
       </button>
       {/* <button onClick={() => setIsVisible(true)}>Show</button> */}
       {/* {isVisible && <HeavyComponent />} */}
-      {/* <Image src={cat} alt='cat' /> */}
+      <Image
+        src={cat}
+        alt='cat'
+        sizes='(max-width:480px) 100vw, (max-width:768px) 50vw, 33vw'
+      />
       {/* <Image
         src='https://bit.ly/react-cover'
-        alt='cat'
+        alt='react'
         // width={300}
         // height={170}
         fill
